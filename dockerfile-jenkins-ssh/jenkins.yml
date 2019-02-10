@@ -1,0 +1,45 @@
+jenkins:
+  disableRememberMe: false
+  mode: NORMAL
+  numExecutors: 5
+  primaryView:
+    all:
+      name: "all"
+  quietPeriod: 5
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "admin"
+        password: "admin"
+      - id: "jenkins_user"
+        password: "jenkins_user"
+  slaveAgentPort: 50000
+  views:
+  - all:
+      name: "all"
+unclassified:
+  gitSCM:
+    globalConfigEmail: "admin@admin.com"
+    globalConfigName: "admin"
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  jdk:
+    defaultProperties:
+    - installSource:
+        installers:
+        - jdkInstaller:
+            acceptLicense: false
+
+security:
+  queueItemAuthenticator:
+    authenticators:
+    - global:
+        strategy:
+          specificUsersAuthorizationStrategy:
+            userid: "jenkins_user"
